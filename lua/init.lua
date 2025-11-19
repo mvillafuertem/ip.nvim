@@ -12,7 +12,9 @@ M.replace_selection_with_ip = function()
 	local s_buf = vim.api.nvim_get_current_buf()
 
 	-- Activar la selección visual
-	vim.cmd("normal! gv")
+	-- Asegurar que la selección está sincronizada
+	vim.cmd("normal! v") -- Forzar entrada a modo visual
+	vim.cmd("normal! gv") -- Sincronización tras vt/
 	local s_pos = vim.fn.getpos("'<")
 	local e_pos = vim.fn.getpos("'>")
 	local s_row, s_col = s_pos[2] - 1, s_pos[3] - 1
