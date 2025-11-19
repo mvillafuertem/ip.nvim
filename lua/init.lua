@@ -9,7 +9,6 @@ local function normalize_range(s_row, s_col, e_row, e_col)
 end
 
 M.replace_selection_with_ip = function()
-
 	local s_buf = vim.api.nvim_get_current_buf()
 
 	-- Activar la selección visual
@@ -21,7 +20,7 @@ M.replace_selection_with_ip = function()
 
 	-- Comprobar si las posiciones son válidas
 	if s_row < 0 or e_row < 0 then
-		print("Invalid selection")
+		vim.api.nvim_err_writeln("Invalid selection")
 		return
 	end
 
